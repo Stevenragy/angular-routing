@@ -1,15 +1,33 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { CustomerComponent } from './customers/customers/customers.component';
+
+import { AuthService } from './user/auth.service';
+import { WelcomeComponent } from './home/welcome.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'pm-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, CustomerComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
+  imports: [WelcomeComponent],
 })
 export class AppComponent {
-  title = 'angular-reactive-forms';
+  pageTitle = 'Acme Product Management';
+
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
+  }
+
+  get userName(): string {
+    if (this.authService.currentUser) {
+      return this.authService.currentUser.userName;
+    }
+    return '';
+  }
+
+  constructor(private authService: AuthService) {}
+
+  logOut(): void {
+    this.authService.logout();
+    console.log('Log out');
+  }
 }
