@@ -1,20 +1,27 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 import { Product } from '../product';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  templateUrl: './product-edit-info.component.html'
+  standalone: true,
+  templateUrl: './product-edit-info.component.html',
+  imports: [CommonModule, FormsModule],
 })
 export class ProductEditInfoComponent implements OnInit {
   @ViewChild(NgForm) productForm?: NgForm;
 
   errorMessage = '';
-  product = { id: 1, productName: 'test', productCode: 'test', description: 'test' };
+  product = {
+    id: 1,
+    productName: 'test',
+    productCode: 'test',
+    description: 'test',
+  };
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

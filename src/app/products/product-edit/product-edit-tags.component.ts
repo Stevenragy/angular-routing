@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Product } from '../product';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   templateUrl: './product-edit-tags.component.html',
+  imports: [CommonModule, FormsModule],
 })
 export class ProductEditTagsComponent implements OnInit {
   errorMessage = '';

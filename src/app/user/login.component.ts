@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 import { AuthService } from './auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  templateUrl: './login.component.html'
+  standalone: true,
+  templateUrl: './login.component.html',
+  imports: [CommonModule, FormsModule],
 })
 export class LoginComponent {
   errorMessage = '';
   pageTitle = 'Log In';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   login(loginForm: NgForm): void {
     if (loginForm && loginForm.valid) {

@@ -4,11 +4,14 @@ import { MessageService } from '../../messages/message.service';
 
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css'],
+  imports: [CommonModule, FormsModule],
 })
 export class ProductEditComponent {
   pageTitle = 'Product Edit';
